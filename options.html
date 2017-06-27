@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<script src="jquery-1.11.1.min.js"></script>
+	<script src="options.js"></script>
+</head>
+<body>
+  
+<h1>CloudNotesCalSync</h1>
+
+
+<table>
+<tr>
+ <td>notes calendar URL</td>
+ <td><input type="text" id="rcalurl" size=50></td>
+</tr>
+<tr>
+<td>google calendar ID</td><td><input type="text" id="gcalid" disabled="disabled" size=50></td>
+</tr>
+</table>
+
+<br>
+
+<H3>同期先カレンダーの選択</H3>
+<div id="select_cal">
+<table id="tbl_gcallist" border=1 cellpadding=2 cellspacing=0>
+<thead bgcolor="Lavender">
+<th>calendar</th>
+<th>id</th>
+<th>access_role</th>
+<th>apply</th>
+</thead>
+<tbody>
+</tbody>
+</table>
+<div id="connecting">Googleよりカレンダーリスト取得中・・・</div>
+</div>
+
+<br>
+
+<H3>使い方</H3>
+<ol>
+<li>notes calendar URLを入力。</li>
+<li>google calendar IDを選択。</li>
+<li>Cloud Notes カレンダーを表示(or リロード)。</li>
+<li>（カレンダー表示後、5秒程度で表示されている予定の同期が開始され、通知が表示される。）</li>
+</ol>
+
+
+<H3>notes calendar URLの調べ方</H3>
+<ol>
+<li>ブラウザでCloud Notesカレンダーを開く。</li>
+<li>左側メニューの一番下「その他のカレンダー」の中にある「カレンダーを開く」をクリック。</li>
+<li>ユーザーの選択で自分を検索し、新しくカレンダーを開く。</li>
+<li>新しく開かれたカレンダーのURLをアドレスバーよりコピー。</li>
+<li>コピーしたURLを本ページ「notes calendar URL」に貼り付け（即時反映）。</li>
+入力例：https://mail.notes.ap.collabserv.com/data9/100212280/100270779.nsf/iNotes/Calendar/?OpenDocument
+</ol>
+
+<H3>google calendar IDについて</H3>
+ここで選択したGoogleカレンダーにNotesカレンダーの予定が登録されます。既存のカレンダーと分けて管理したい場合はGoogleにてカレンダーを追加してください（別管理推奨）。
+<br>
+
+<H3>仕様</H3>
+<ul>
+<li>Cloud Notesカレンダーを開いた際に表示された予定をGoogleに同期する（同期のトリガはNotesカレンダーの表示）。</li>
+<li>Google→Notes方向は同期しない。</li>
+<li>同期する情報は、月/2週間単位表示時：件名、日時のみ、日/週単位表示時：件名、日時、場所のみ（詳細は含まず）。</li>
+<li>月表示での同期後に週表示した場合は場所情報をアップデートする。週表示した後に月表示しても場所情報は保持（但し、件名 or 日時が変更されていた場合は、こちらの情報を優先し場所情報なしでアップデートする）。</li>
+<li>繰り返しの予定も独立した複数の予定としてGoogleへ登録。</li>
+<li>予定の削除はしない。Notes→Google同期後、Notes上で予定を削除した場合は手動でGoogle上の予定を削除する必要あり。</li>
+<li>Google上で予定を削除してもNotesカレンダー上の予定を削除しない限り、再度Googleへ予定登録（同期）される。</li>
+<li>非常駐（カレンダー表示時に起動し同期後終了）。</li>
+</ul>
+
+<H3>その他</H3>
+Cloud Notesカレンダーの読み取りは、API非公開のため表示情報を解析しています。このため、Notesの仕様変更などにより突然挙動がおかしくなるかもしれません。その場合は使用を中止するようお願いします。<br>
+不都合ありましたら3G宮内までお願いします。
+
+</body>
+</html>

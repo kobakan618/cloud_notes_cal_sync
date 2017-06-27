@@ -1,0 +1,53 @@
+﻿{
+	"name": "CloudNotesCalSync",
+	"version": "0.9",
+	"manifest_version": 2,
+	"description": "CloudNotesカレンダー上の予定をGoogleカレンダーへ同期。",
+
+	"icons": {
+		"128"	: "icon_128.png"
+	},
+
+	"browser_action"	: {
+		"default_popup"		: "popup.html"
+	},
+	
+	"permissions": ["identity", "identity.email", "notifications"],
+
+	"content_scripts": [
+		{      
+			"matches" : [
+				"https://mail.notes.ap.collabserv.com/*/*/*.nsf/iNotes/Calendar/*",
+				"https://mail.notes.ap.collabserv.com/*/*/*.nsf/iNotes/Mail/*"
+				
+			],
+
+			"js": [
+				"notesevent.js",
+				"content_script.js"
+			],
+
+		        "run_at"	: "document_start",
+		        "all_frames"	: true
+		}
+	],
+
+	"options_page"	: "options.html",
+
+	"background"	: {
+		 "scripts" : [
+			"notesevent.js",
+			"background.js"
+		],
+		"persistent"	: false
+	},
+  
+	"oauth2": {
+		"client_id": "134955643047-holtvf0s59j89u0oa9a72rjs0i15d1b8.apps.googleusercontent.com",
+		"scopes": [
+			"https://www.googleapis.com/auth/userinfo.email",
+			"https://www.googleapis.com/auth/calendar"
+		]   
+	} 
+}
+
