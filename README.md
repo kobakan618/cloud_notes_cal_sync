@@ -1,0 +1,2 @@
+# cloud_notes_cal_sync
+NotesクラウドカレンダーのGoogleカレンダー同期アプリ(Chrome拡張)
